@@ -39,6 +39,16 @@ class QueryProcessorTest {
 	}
 
 	@Test
+	void testSquareCube() {
+		String actual = queryProcessor.process("7a075720: which of the following numbers is both a square and a cube: 46656, 996, 354, 531441");
+		System.out.println("|" + actual + "|");
+		if(!actual.contains("46656")
+		|| !actual.contains("531441")) {
+			fail("The QueryProcessor does not know square cube.");
+		}
+	}
+
+	@Test
 	void isNotCaseSensitive() {
 		String actual = queryProcessor.process("shakespeare");
 		if (!actual.contains("playwright")) {

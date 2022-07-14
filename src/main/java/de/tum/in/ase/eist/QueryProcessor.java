@@ -30,8 +30,27 @@ public class QueryProcessor {
             return Integer.toString(max);
         } else if(query.contains("plus")) {
             return Integer.toString(Integer.parseInt(query.split(" ")[3]) + Integer.parseInt(query.split(" ")[5]));
+        } else if(query.contains("square") && query.contains("cube")) {
+            String string = query.split(":")[2];
+            List<Integer> integers = Arrays.stream(string.split(",")).map(s -> Integer.valueOf(s.trim())).toList();
+
+            StringBuilder out = new StringBuilder();
+            for (Integer i : integers) {
+                if(almostEqual((int) Math.round(Math.pow(i, 1.0/2.0)), Math.pow(i, 1.0/2.0))
+                && almostEqual((int) Math.round(Math.pow(i, 1.0/3.0)), Math.pow(i, 1.0/3.0))) {
+                    out.append(i).append(", ");
+                }
+            }
+            if(!out.isEmpty()) {
+                return out.substring(0, out.length() - 2);
+            }
+            return "";
         } else { // TODO extend the programm here
             return "";
         }
+    }
+
+    private boolean almostEqual(int one, double two) {
+        return Math.abs(one - two) < 0.00001;
     }
 }

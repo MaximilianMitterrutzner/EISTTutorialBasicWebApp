@@ -45,6 +45,10 @@ public class QueryProcessor {
                 return out.substring(0, out.length() - 2);
             }
             return "";
+        } else if(query.contains("fibo")) {
+            String num = query.split(" ")[4];
+            num = num.substring(0, num.length() - 2);
+            return "" + fibo(Integer.parseInt(num) - 1);
         } else { // TODO extend the programm here
             return "";
         }
@@ -52,5 +56,12 @@ public class QueryProcessor {
 
     private boolean almostEqual(int one, double two) {
         return Math.abs(one - two) < 0.00001;
+    }
+
+    private int fibo(int i) {
+        if(i == 0 || i == 1) {
+            return 1;
+        }
+        return fibo(i - 1) + fibo(i - 2);
     }
 }

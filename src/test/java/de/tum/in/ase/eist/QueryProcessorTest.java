@@ -49,6 +49,15 @@ class QueryProcessorTest {
 	}
 
 	@Test
+	void testFibo() {
+		String actual = queryProcessor.process("297e18d0: what is the 17th number in the Fibonacci sequence");
+		if(!actual.contains("1597")) {
+			System.out.println(actual);
+			fail("The QueryProcessor does not know fibo.");
+		}
+	}
+
+	@Test
 	void isNotCaseSensitive() {
 		String actual = queryProcessor.process("shakespeare");
 		if (!actual.contains("playwright")) {

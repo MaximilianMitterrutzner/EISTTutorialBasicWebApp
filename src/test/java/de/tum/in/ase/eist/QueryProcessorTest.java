@@ -31,6 +31,14 @@ class QueryProcessorTest {
 	}
 
 	@Test
+	void testPlus() {
+		String actual = queryProcessor.process("31dee650: what is 12 plus 7");
+		if (!actual.contains("19")) {
+			fail("The QueryProcessor does not know plus.");
+		}
+	}
+
+	@Test
 	void isNotCaseSensitive() {
 		String actual = queryProcessor.process("shakespeare");
 		if (!actual.contains("playwright")) {

@@ -28,6 +28,8 @@ public class QueryProcessor {
             }
 
             return Integer.toString(max);
+        } else if(query.contains("plus")) {
+            return Integer.toString(Integer.parseInt(query.split(" ")[3]) + Integer.parseInt(query.split(" ")[5]));
         } else { // TODO extend the programm here
             return "";
         }

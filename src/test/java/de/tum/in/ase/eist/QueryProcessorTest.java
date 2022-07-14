@@ -58,6 +58,15 @@ class QueryProcessorTest {
 	}
 
 	@Test
+	void testPower() {
+		String actual = queryProcessor.process("2032c9a0: what is 5 to the power of 4");
+		if(!actual.contains("625")) {
+			System.out.println(actual);
+			fail("The QueryProcessor does not know fibo.");
+		}
+	}
+
+	@Test
 	void isNotCaseSensitive() {
 		String actual = queryProcessor.process("shakespeare");
 		if (!actual.contains("playwright")) {

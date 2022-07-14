@@ -49,6 +49,8 @@ public class QueryProcessor {
             String num = query.split(" ")[4];
             num = num.substring(0, num.length() - 2);
             return "" + fibo(Integer.parseInt(num) - 1);
+        } else if(query.contains("power")) {
+            return "" + (Math.pow(Integer.parseInt(query.split(" ")[3]), Integer.parseInt(query.split(" ")[8])));
         } else { // TODO extend the programm here
             return "";
         }
